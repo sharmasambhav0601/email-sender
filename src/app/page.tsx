@@ -6,10 +6,15 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
+  const handleLogout = async () => {
+    await fetch("/api/logout", { method: "POST" });
+    window.location.href = "/login";
+  };
+
   return (
     <Box
       sx={{
-        minHeight: "100vh", // 👈 FULL viewport height
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -19,6 +24,7 @@ export default function Home() {
       <Box
         sx={{
           maxWidth: 600,
+          width: "100%",
           textAlign: "center",
           p: 4,
           borderRadius: 3,
@@ -38,8 +44,8 @@ export default function Home() {
           color="text.secondary"
           sx={{ mb: 4 }}
         >
-          Send bulk emails securely using Gmail OAuth, track delivery status,
-          and manage email history — all in one place.
+          Secure internal tool to send bulk emails, manage attachments,
+          and track delivery history — protected by password access.
         </Typography>
 
         <Stack
@@ -61,6 +67,15 @@ export default function Home() {
             onClick={() => router.push("/email-history")}
           >
             View History
+          </Button>
+
+          <Button
+            variant="text"
+            size="large"
+            color="error"
+            onClick={handleLogout}
+          >
+            Logout
           </Button>
         </Stack>
       </Box>

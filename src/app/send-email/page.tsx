@@ -11,37 +11,44 @@ import {
   CircularProgress,
   Snackbar,
   Alert,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Divider,
 } from "@mui/material";
+import { defaultEmailTemplate } from "@/data/data";
 
 export default function SendEmailPage() {
   const [emailInput, setEmailInput] = useState("");
   const [emails, setEmails] = useState<string[]>([]);
-  const [subject, setSubject] = useState("Java Developer Resume");
-  const [message, setMessage] = useState(`Dear Sir/Madam,
 
-I hope you are doing well. My name is Sambhav Sharma, and I am interested in Java Developer opportunities within your organization.
+  const [subject, setSubject] = useState(
+  defaultEmailTemplate.subject
+);
 
-I have attached my resume for your review and would appreciate your consideration for any suitable Java Developer roles.
+const [message, setMessage] = useState(
+  defaultEmailTemplate.message
+);
 
-Thank you for your time.
-
-Best regards,
-Sambhav Sharma
-LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
-`);
-
-  // 📎 File state
+  // 📎 Attachment
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState("");
 
+  // UI state
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Progress
   const [sentCount, setSentCount] = useState(0);
   const [failedCount, setFailedCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
 
+  // Preview
+  const [showPreview, setShowPreview] = useState(false);
+
+  // ➕ Add email(s)
   const addEmail = () => {
     const values = emailInput
       .split(",")
@@ -53,7 +60,9 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
           !emails.includes(e)
       );
 
-    if (values.length) setEmails((prev) => [...prev, ...values]);
+    if (values.length) {
+      setEmails((prev) => [...prev, ...values]);
+    }
     setEmailInput("");
   };
 
@@ -61,24 +70,26 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
     setEmails((prev) => prev.filter((e) => e !== email));
   };
 
+  // 🚀 Send Email
   const handleSend = async () => {
     if (!emails.length) {
-      alert("Please add at least one email");
+      setError("Please add at least one email address");
       return;
     }
 
     setLoading(true);
+    setError("");
     setSentCount(0);
     setFailedCount(0);
     setTotalCount(emails.length);
     setShowProgress(true);
+    setShowPreview(false);
 
     const formData = new FormData();
     formData.append("emails", JSON.stringify(emails));
     formData.append("subject", subject);
     formData.append("message", message);
 
-    // 🔁 If user uploaded file → override default
     if (file) {
       formData.append("file", file);
       formData.append("fileName", fileName || file.name);
@@ -90,20 +101,20 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
         body: formData,
       });
 
-      if (res.status === 401) {
-        window.location.href = "/api/oauth/start";
-        return;
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Failed to send emails");
       }
 
       const data = await res.json();
-      setSentCount(data.sent || emails.length);
+      setSentCount(data.sent || 0);
       setFailedCount(data.failed || 0);
 
       setEmails([]);
       setFile(null);
       setFileName("");
-    } catch {
-      alert("Failed to send emails");
+    } catch (err: any) {
+      setError(err.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -111,7 +122,7 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
 
   return (
     <>
-      {/* Progress Overlay */}
+      {/* 📊 Progress Overlay */}
       {showProgress && (
         <Box
           sx={{
@@ -148,7 +159,41 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
         </Box>
       )}
 
-      {/* Centered Form */}
+      {/* 🧾 Email Preview Dialog */}
+      <Dialog open={showPreview} onClose={() => setShowPreview(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Email Preview</DialogTitle>
+        <DialogContent dividers>
+          <Typography variant="subtitle2">Recipients</Typography>
+          <Typography variant="body2" color="text.secondary">
+            {emails.join(", ")}
+          </Typography>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Typography variant="subtitle2">Subject</Typography>
+          <Typography>{subject}</Typography>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Typography variant="subtitle2">Message</Typography>
+          <Typography whiteSpace="pre-line">{message}</Typography>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Typography variant="subtitle2">Attachment</Typography>
+          <Typography>
+            {fileName || "Sambhav_Java_FS_Resume.pdf (default)"}
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowPreview(false)}>Edit</Button>
+          <Button variant="contained" onClick={handleSend}>
+            Send
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* 📬 Main Form */}
       <Box
         sx={{
           minHeight: "100vh",
@@ -162,7 +207,7 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
           <Typography variant="h5">Send Email</Typography>
 
           <TextField
-            label="Add email & press Enter"
+            label="Add email(s) & press Enter"
             fullWidth
             margin="normal"
             value={emailInput}
@@ -184,7 +229,6 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
           <TextField label="Subject" fullWidth margin="normal" value={subject} onChange={(e) => setSubject(e.target.value)} />
           <TextField label="Message" fullWidth multiline rows={6} margin="normal" value={message} onChange={(e) => setMessage(e.target.value)} />
 
-          {/* 📎 Resume Upload */}
           <Typography variant="body2" mt={2} color="text.secondary">
             If no file is uploaded, default resume will be used
           </Typography>
@@ -205,31 +249,31 @@ LinkedIn: https://www.linkedin.com/in/sambhav-sharma-242774282/
             />
           </Button>
 
-          {/* Rename Attachment */}
           {file && (
-            <>
-              <Typography variant="body2" mt={1}>
-                Selected: {file.name}
-              </Typography>
-
-              <TextField
-                label="Rename attachment"
-                fullWidth
-                margin="normal"
-                value={fileName}
-                onChange={(e) => setFileName(e.target.value)}
-                helperText="Example: Sambhav_Sharma_Java_Developer.pdf"
-              />
-            </>
+            <TextField
+              label="Rename attachment"
+              fullWidth
+              margin="normal"
+              value={fileName}
+              onChange={(e) => setFileName(e.target.value)}
+            />
           )}
 
-          <Box mt={3}>
-            <Button fullWidth variant="contained" onClick={handleSend} disabled={loading}>
-              {loading ? <CircularProgress size={24} /> : "Send Email"}
+          <Stack direction="row" spacing={2} mt={3}>
+            <Button fullWidth variant="outlined" onClick={() => setShowPreview(true)} disabled={!emails.length}>
+              Preview
             </Button>
-          </Box>
+            <Button fullWidth variant="contained" onClick={() => setShowPreview(true)} disabled={!emails.length || loading}>
+              Send
+            </Button>
+          </Stack>
         </Box>
       </Box>
+
+      {/* ❌ Error Snackbar */}
+      <Snackbar open={!!error} autoHideDuration={4000} onClose={() => setError("")}>
+        <Alert severity="error">{error}</Alert>
+      </Snackbar>
     </>
   );
 }

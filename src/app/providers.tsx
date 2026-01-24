@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ThemeProvider,
   createTheme,
@@ -14,13 +14,37 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import HomeIcon from "@mui/icons-material/Home";
 import { useRouter } from "next/navigation";
 
+const THEME_KEY = "site_theme"; // 🔑 localStorage key
+
 export default function Providers({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [mode, setMode] = useState<"light" | "dark">("dark");
   const router = useRouter();
+
+  // ✅ Load theme from localStorage (default: dark)
+  const [mode, setMode] = useState<"light" | "dark">("dark");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem(THEME_KEY) as
+      | "light"
+      | "dark"
+      | null;
+
+    if (savedTheme) {
+      setMode(savedTheme);
+    }
+  }, []);
+
+  // ✅ Persist theme on change
+  const toggleTheme = () => {
+    setMode((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      localStorage.setItem(THEME_KEY, next);
+      return next;
+    });
+  };
 
   const theme = useMemo(
     () =>
@@ -50,7 +74,7 @@ export default function Providers({
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {/* Floating Controls with Background */}
+      {/* Floating Controls */}
       <Box
         sx={{
           position: "fixed",
@@ -70,20 +94,12 @@ export default function Providers({
       >
         <Stack direction="row" spacing={0.5}>
           {/* Home */}
-          <IconButton
-            onClick={() => router.push("/")}
-            color="primary"
-          >
+          <IconButton onClick={() => router.push("/")} color="primary">
             <HomeIcon />
           </IconButton>
 
           {/* Theme Toggle */}
-          <IconButton
-            onClick={() =>
-              setMode((prev) => (prev === "dark" ? "light" : "dark"))
-            }
-            color="primary"
-          >
+          <IconButton onClick={toggleTheme} color="primary">
             {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
         </Stack>

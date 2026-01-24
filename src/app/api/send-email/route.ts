@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { google } from "googleapis";
 import path from "path";
 import fs from "fs/promises";
 
 import { connectDB } from "@/lib/mongodb";
 import EmailLog from "@/models/EmailLog";
-import OAuthToken from "@/models/OAuthToken";
 
 export async function POST(req: Request) {
   await connectDB();
@@ -20,54 +18,21 @@ export async function POST(req: Request) {
   const file = formData.get("file") as File | null;
   const customFileName = formData.get("fileName") as string | null;
 
-  // 🔐 OAuth token
-  const token = await OAuthToken.findOne();
-  if (!token) {
-    return NextResponse.json(
-      { error: "Gmail not authorized" },
-      { status: 401 }
-    );
-  }
-
-  const BASE_URL =
-    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-  const oauth2Client = new google.auth.OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    `${BASE_URL}/api/oauth/callback`
-  );
-
-  oauth2Client.setCredentials({
-    refresh_token: token.refreshToken,
-  });
-
-  const accessTokenResponse = await oauth2Client.getAccessToken();
-  const accessToken = accessTokenResponse?.token;
-
-  if (!accessToken) {
-    return NextResponse.json(
-      { error: "Failed to obtain access token" },
-      { status: 500 }
-    );
-  }
-
+  // ✅ Gmail SMTP using App Password
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
-      type: "OAuth2",
       user: process.env.GMAIL_USER,
-      clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      refreshToken: token.refreshToken,
-      accessToken,
+      pass: process.env.GMAIL_APP_PASSWORD,
     },
   });
 
   // 📎 Attachment
   let attachmentPath: string;
   let attachmentName: string;
-  let isTempFile = false; // 👈 TRACK TEMP FILE
+  let isTempFile = false;
 
   if (file) {
     const buffer = Buffer.from(await file.arrayBuffer());
@@ -79,7 +44,7 @@ export async function POST(req: Request) {
     attachmentPath = path.join(tmpDir, attachmentName);
     await fs.writeFile(attachmentPath, buffer);
 
-    isTempFile = true; // 👈 mark for cleanup
+    isTempFile = true;
   } else {
     attachmentName = "Sambhav_Java_FS_Resume.pdf";
     attachmentPath = path.join(
@@ -140,7 +105,7 @@ export async function POST(req: Request) {
     );
   }
 
-  // 🧹 CLEANUP USER-UPLOADED FILE
+  // 🧹 Cleanup temp file
   if (isTempFile) {
     try {
       await fs.unlink(attachmentPath);
