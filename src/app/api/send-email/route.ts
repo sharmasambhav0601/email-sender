@@ -12,7 +12,6 @@ export async function POST(req: Request) {
   const emails: string[] = JSON.parse(formData.get("emails") as string);
   const subject = formData.get("subject") as string;
   const message = formData.get("message") as string;
-  const htmlMessage = formData.get("htmlMessage") as string | null; // ← NEW
   const file = formData.get("file") as File | null;
   const customFileName = formData.get("fileName") as string | null;
 
@@ -67,8 +66,7 @@ export async function POST(req: Request) {
             from: process.env.GMAIL_USER,
             to,
             subject,
-            text: message,                          // plain-text fallback
-            ...(htmlMessage && { html: htmlMessage }), // ← NEW: HTML version if provided
+            text: message,                         
             attachments: [
               {
                 filename: attachmentName,
