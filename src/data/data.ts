@@ -5,7 +5,7 @@ export const appConfig = {
 };
 
 export const defaultEmailTemplate = {
-  subject: "Java Full Stack Engineer — Open to Opportunities",
+  subject: "Java Full Stack Engineer - Open to Opportunities",
 
   // ─── PLAIN TEXT VERSION ───────────────────────────────────────────────────
   message: `Hi,
@@ -26,7 +26,7 @@ I take pride in writing clean, maintainable code and consistently delivering fea
 
 I've attached my resume for reference. I'd love to connect, or if there's a suitable role, I'd truly appreciate a referral.
 
-Thank you for your time — it means a lot.
+Thank you for your time - it means a lot.
 
 Best regards,
 Sambhav Sharma
