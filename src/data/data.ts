@@ -34,104 +34,286 @@ Sambhav Sharma
 📞 +91 7986147005
 🔗 linkedin.com/in/sambhav-sharma-java`,
 
-  // ─── HTML VERSION ─────────────────────────────────────────────────────────
+  // ─── HTML VERSION (Gmail-safe, table-based) ────────────────────────────────
   htmlMessage: `<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#f0ede8;font-family:'DM Sans',Arial,sans-serif;color:#1a1a1a;padding:0}
-.wrapper{width:100%;max-width:100%}
-.header{background:#0f2d3d;padding:clamp(28px,5vw,48px) clamp(20px,6vw,56px);position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(20,160,120,0.25) 0%,transparent 70%);border-radius:50%}
-.header::after{content:'';position:absolute;bottom:-20px;left:20px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,180,60,0.15) 0%,transparent 70%);border-radius:50%}
-.header-tag{display:inline-block;background:rgba(20,160,120,0.2);color:#4ecfa0;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid rgba(78,207,160,0.35);margin-bottom:16px}
-.header h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(26px,5vw,38px);color:#fff;line-height:1.2;margin-bottom:8px}
-.header-role{color:#4ecfa0;font-size:clamp(13px,2vw,15px);font-weight:500}
-.body-card{background:#fff;padding:clamp(24px,5vw,48px) clamp(20px,6vw,56px)}
-.greeting{font-size:16px;color:#444;line-height:1.75;margin-bottom:20px}
-.intro{font-size:15.5px;color:#222;line-height:1.8;margin-bottom:28px}
-.intro strong{color:#0f2d3d;font-weight:600}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
-.stat-pill{background:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:clamp(12px,2vw,18px) 12px;text-align:center}
-.stat-num{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(20px,3vw,26px);color:#0f2d3d;display:block}
-.stat-label{font-size:11px;color:#888;font-weight:500;text-transform:uppercase;letter-spacing:0.8px;margin-top:2px;display:block}
-.section-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#aaa;margin-bottom:14px}
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:32px}
-@media(max-width:480px){.skills-grid{grid-template-columns:1fr}}
-.skill-chip{display:flex;align-items:center;gap:10px;background:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px}
-.skill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.dot-green{background:#14a078}.dot-blue{background:#1a6abf}.dot-orange{background:#d9731a}.dot-purple{background:#7c4dbd}
-.skill-name{font-size:13.5px;font-weight:500;color:#222}
-.quote-block{border-left:3px solid #14a078;padding:14px 18px;background:#f0faf6;border-radius:0 10px 10px 0;margin-bottom:32px}
-.quote-block p{font-size:14.5px;color:#1a4a38;line-height:1.75;font-style:italic}
-.cta-section{font-size:15px;color:#444;line-height:1.8;margin-bottom:8px}
-.cta-section strong{color:#0f2d3d}
-.divider{height:1px;background:#e8e4df}
-.footer{background:#0f2d3d;padding:clamp(24px,4vw,36px) clamp(20px,6vw,56px)}
-.footer-name{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(18px,3vw,22px);color:#fff;margin-bottom:4px}
-.footer-role{font-size:12px;color:#4ecfa0;font-weight:500;letter-spacing:0.5px;margin-bottom:18px;text-transform:uppercase}
-.footer-contacts{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.footer-link{display:flex;align-items:center;gap:8px;color:#aac8d8;font-size:13px;text-decoration:none}
-.footer-link:hover{color:#fff}
-.footer-icon{width:28px;height:28px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.linkedin-icon{background:rgba(10,102,194,0.25);border-color:rgba(10,102,194,0.4)}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sambhav Sharma — Java Full Stack Engineer</title>
+  <style>
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
+    body { margin: 0 !important; padding: 0 !important; background-color: #f0ede8; width: 100% !important; }
+    a { text-decoration: none; }
+    @media only screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .stat-col { display: block !important; width: 100% !important; }
+      .skill-col { display: block !important; width: 100% !important; padding: 0 0 8px 0 !important; }
+      .footer-td { display: block !important; padding: 0 0 12px 0 !important; }
+      .header-pad, .body-pad, .footer-pad { padding-left: 24px !important; padding-right: 24px !important; }
+    }
+  </style>
 </head>
-<body>
-<div class="wrapper">
-  <div class="header">
-    <div class="header-tag">Open to Opportunities</div>
-    <h1>Hi, I'm Sambhav<br/>Sharma 👋</h1>
-    <div class="header-role">Java Full Stack Engineer · 1.7 Years Experience</div>
-  </div>
-  <div class="body-card">
-    <p class="greeting">Hope you're having a great day!</p>
-    <p class="intro">I came across an opportunity at your organization and wanted to connect directly. I'm a <strong>Java Full Stack Software Engineer</strong> passionate about building scalable, production-ready applications — from clean backend APIs to polished frontends.</p>
-    <div class="stats-row">
-      <div class="stat-pill"><span class="stat-num">1.7</span><span class="stat-label">Years XP</span></div>
-      <div class="stat-pill"><span class="stat-num">5+</span><span class="stat-label">Projects</span></div>
-      <div class="stat-pill"><span class="stat-num">Full</span><span class="stat-label">Stack</span></div>
-    </div>
-    <div class="section-title">Core Skills</div>
-    <div class="skills-grid">
-      <div class="skill-chip"><div class="skill-dot dot-blue"></div><span class="skill-name">Java &amp; Spring Boot</span></div>
-      <div class="skill-chip"><div class="skill-dot dot-purple"></div><span class="skill-name">React &amp; TypeScript</span></div>
-      <div class="skill-chip"><div class="skill-dot dot-green"></div><span class="skill-name">Microservices &amp; REST APIs</span></div>
-      <div class="skill-chip"><div class="skill-dot dot-orange"></div><span class="skill-name">AWS / Azure · CI/CD</span></div>
-    </div>
-    <div class="quote-block">
-      <p>"I write clean, end-to-end code — not just features. Whether it's a microservice or a React component, I care about the details."</p>
-    </div>
-    <div class="cta-section">
-      I've attached my resume for reference. If there's a suitable opening, I'd genuinely appreciate the opportunity to connect or be considered for a referral.<br/><br/>
-      <strong>Thank you for your time — it truly means a lot.</strong>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="footer">
-    <div class="footer-name">Sambhav Sharma</div>
-    <div class="footer-role">Java Full Stack Engineer</div>
-    <div class="footer-contacts">
-      <a href="mailto:sharmasambhav06@gmail.com" class="footer-link">
-        <span class="footer-icon">✉</span>sharmasambhav06@gmail.com
-      </a>
-      <a href="tel:+917986147005" class="footer-link">
-        <span class="footer-icon">✆</span>+91 7986147005
-      </a>
-      <a href="https://www.linkedin.com/in/sambhav-sharma-java/" class="footer-link" target="_blank">
-        <span class="footer-icon linkedin-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#4e9fd1" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-        </span>linkedin.com/in/sambhav-sharma-java
-      </a>
-    </div>
-  </div>
-</div>
+<body style="margin:0;padding:0;background-color:#f0ede8;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0ede8;">
+  <tr>
+    <td align="center">
+
+      <table class="email-container" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;">
+
+        <!-- ═══ HEADER ═══ -->
+        <tr>
+          <td class="header-pad" style="background-color:#0f2d3d;padding:40px 48px 32px;border-radius:16px 16px 0 0;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background-color:rgba(20,160,120,0.18);border:1px solid rgba(78,207,160,0.4);border-radius:100px;padding:5px 14px;mso-border-radius:100px;">
+                  <span style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4ecfa0;">Open to Opportunities</span>
+                </td>
+              </tr>
+            </table>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:34px;color:#ffffff;line-height:1.2;margin:16px 0 8px 0;">Hi, I'm Sambhav<br/>Sharma &#x1F44B;</p>
+            <p style="font-family:Arial,sans-serif;font-size:14px;color:#4ecfa0;font-weight:500;margin:0;">Java Full Stack Engineer &middot; 1.7 Years Experience</p>
+          </td>
+        </tr>
+
+        <!-- ═══ BODY ═══ -->
+        <tr>
+          <td class="body-pad" style="background-color:#ffffff;padding:40px 48px;">
+
+            <p style="font-family:Arial,sans-serif;font-size:16px;color:#444444;line-height:1.75;margin:0 0 20px 0;">Hope you're having a great day!</p>
+
+            <p style="font-family:Arial,sans-serif;font-size:15px;color:#222222;line-height:1.8;margin:0 0 32px 0;">
+              I came across an opportunity at your organization and wanted to connect directly.
+              I'm a <strong style="color:#0f2d3d;">Java Full Stack Software Engineer</strong> passionate about building
+              scalable, production-ready applications &mdash; from clean backend APIs to polished frontends.
+            </p>
+
+            <!-- STATS: 3-column table -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+              <tr>
+                <td class="stat-col" width="33%" style="padding-right:6px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                        <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">1.7</span>
+                        <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Years XP</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="stat-col" width="33%" style="padding:0 6px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                        <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">5+</span>
+                        <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Projects</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="stat-col" width="33%" style="padding-left:6px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                        <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">Full</span>
+                        <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Stack</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- SKILLS LABEL -->
+            <p style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aaaaaa;margin:0 0 14px 0;">Core Skills</p>
+
+            <!-- SKILLS: 2x2 table -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+              <tr>
+                <td class="skill-col" width="50%" style="padding-right:5px;padding-bottom:10px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td style="width:8px;vertical-align:middle;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="8" height="8">
+                                <tr><td style="background-color:#1a6abf;border-radius:4px;width:8px;height:8px;font-size:0;">&nbsp;</td></tr>
+                              </table>
+                            </td>
+                            <td style="padding-left:10px;vertical-align:middle;">
+                              <span style="font-family:Arial,sans-serif;font-size:13px;font-weight:500;color:#222222;">Java &amp; Spring Boot</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="skill-col" width="50%" style="padding-left:5px;padding-bottom:10px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td style="width:8px;vertical-align:middle;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="8" height="8">
+                                <tr><td style="background-color:#7c4dbd;border-radius:4px;width:8px;height:8px;font-size:0;">&nbsp;</td></tr>
+                              </table>
+                            </td>
+                            <td style="padding-left:10px;vertical-align:middle;">
+                              <span style="font-family:Arial,sans-serif;font-size:13px;font-weight:500;color:#222222;">React &amp; TypeScript</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="skill-col" width="50%" style="padding-right:5px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td style="width:8px;vertical-align:middle;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="8" height="8">
+                                <tr><td style="background-color:#14a078;border-radius:4px;width:8px;height:8px;font-size:0;">&nbsp;</td></tr>
+                              </table>
+                            </td>
+                            <td style="padding-left:10px;vertical-align:middle;">
+                              <span style="font-family:Arial,sans-serif;font-size:13px;font-weight:500;color:#222222;">Microservices &amp; REST APIs</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="skill-col" width="50%" style="padding-left:5px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td style="width:8px;vertical-align:middle;">
+                              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="8" height="8">
+                                <tr><td style="background-color:#d9731a;border-radius:4px;width:8px;height:8px;font-size:0;">&nbsp;</td></tr>
+                              </table>
+                            </td>
+                            <td style="padding-left:10px;vertical-align:middle;">
+                              <span style="font-family:Arial,sans-serif;font-size:13px;font-weight:500;color:#222222;">AWS / Azure &middot; CI/CD</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- QUOTE BLOCK -->
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
+              <tr>
+                <td width="4" style="background-color:#14a078;border-radius:3px;font-size:0;">&nbsp;</td>
+                <td style="background-color:#f0faf6;padding:14px 18px;border-radius:0 10px 10px 0;">
+                  <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#1a4a38;line-height:1.75;font-style:italic;margin:0;">
+                    &ldquo;I write clean, end-to-end code &mdash; not just features. Whether it&rsquo;s a microservice or a React component, I care about the details.&rdquo;
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- CTA -->
+            <p style="font-family:Arial,sans-serif;font-size:15px;color:#444444;line-height:1.8;margin:0 0 16px 0;">
+              I've attached my resume for reference. If there's a suitable opening,
+              I'd genuinely appreciate the opportunity to connect or be considered for a referral.
+            </p>
+            <p style="font-family:Arial,sans-serif;font-size:15px;color:#0f2d3d;font-weight:700;line-height:1.8;margin:0;">
+              Thank you for your time &mdash; it truly means a lot.
+            </p>
+
+          </td>
+        </tr>
+
+        <!-- DIVIDER -->
+        <tr>
+          <td style="background-color:#ffffff;padding:0 48px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr><td style="border-top:1px solid #e8e4df;font-size:0;line-height:0;">&nbsp;</td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- ═══ FOOTER ═══ -->
+        <tr>
+          <td class="footer-pad" style="background-color:#0f2d3d;padding:28px 48px;border-radius:0 0 16px 16px;">
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#ffffff;margin:0 0 4px 0;">Sambhav Sharma</p>
+            <p style="font-family:Arial,sans-serif;font-size:12px;color:#4ecfa0;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin:0 0 18px 0;">Java Full Stack Engineer</p>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <!-- Email -->
+              <tr>
+                <td class="footer-td" style="padding-bottom:10px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" valign="middle" style="background-color:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;width:28px;height:28px;">
+                        <span style="font-family:Arial,sans-serif;font-size:13px;color:#aac8d8;">&#x2709;</span>
+                      </td>
+                      <td style="padding-left:8px;">
+                        <a href="mailto:sharmasambhav06@gmail.com" style="font-family:Arial,sans-serif;font-size:13px;color:#aac8d8;text-decoration:none;">sharmasambhav06@gmail.com</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- Phone -->
+              <tr>
+                <td class="footer-td" style="padding-bottom:10px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" valign="middle" style="background-color:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;width:28px;height:28px;">
+                        <span style="font-family:Arial,sans-serif;font-size:13px;color:#aac8d8;">&#x260E;</span>
+                      </td>
+                      <td style="padding-left:8px;">
+                        <a href="tel:+917986147005" style="font-family:Arial,sans-serif;font-size:13px;color:#aac8d8;text-decoration:none;">+91 7986147005</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- LinkedIn -->
+              <tr>
+                <td class="footer-td">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td align="center" valign="middle" style="background-color:rgba(10,102,194,0.25);border:1px solid rgba(10,102,194,0.45);border-radius:8px;width:28px;height:28px;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="14" height="14" alt="in" style="display:block;margin:7px auto;border:0;" />
+                      </td>
+                      <td style="padding-left:8px;">
+                        <a href="https://www.linkedin.com/in/sambhav-sharma-java/" target="_blank" style="font-family:Arial,sans-serif;font-size:13px;color:#aac8d8;text-decoration:none;">linkedin.com/in/sambhav-sharma-java</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+      </table>
+      <!-- /EMAIL CONTAINER -->
+
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>`,
 };
