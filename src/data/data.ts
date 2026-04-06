@@ -7,7 +7,6 @@ export const appConfig = {
 export const defaultEmailTemplate = {
   subject: "Java Full Stack Engineer - Open to Opportunities",
 
-  // ─── PLAIN TEXT VERSION ───────────────────────────────────────────────────
   message: `Hi,
 
 I hope you're doing well.
@@ -34,25 +33,35 @@ Sambhav Sharma
 📞 +91 7986147005
 🔗 linkedin.com/in/sambhav-sharma-java`,
 
-  // ─── HTML VERSION (Gmail-safe, table-based) ────────────────────────────────
   htmlMessage: `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="color-scheme: light only;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
   <title>Sambhav Sharma — Java Full Stack Engineer</title>
   <style>
+    :root { color-scheme: light only; }
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
-    body { margin: 0 !important; padding: 0 !important; background-color: #f0ede8; width: 100% !important; }
+    body { margin: 0 !important; padding: 0 !important; background-color: #f0ede8 !important; width: 100% !important; }
     a { text-decoration: none; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #f0ede8 !important; color: #222222 !important; }
+      .force-light { background-color: #ffffff !important; color: #222222 !important; }
+      .force-header { background-color: #0f2d3d !important; }
+      .force-footer { background-color: #0f2d3d !important; }
+      .force-stat { background-color: #f7f4ef !important; color: #0f2d3d !important; }
+      .force-skill { background-color: #f7f4ef !important; }
+      .force-quote { background-color: #f0faf6 !important; }
+      .force-bg { background-color: #f0ede8 !important; }
+    }
+
     @media only screen and (max-width: 600px) {
       .email-container { width: 100% !important; }
-      .stat-col {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 0 10px 0 !important;
-      }
+      .stat-col { display: block !important; width: 100% !important; padding: 0 0 10px 0 !important; }
       .skill-col { display: block !important; width: 100% !important; padding: 0 0 8px 0 !important; }
       .footer-td { display: block !important; padding: 0 0 12px 0 !important; }
       .header-pad, .body-pad, .footer-pad { padding-left: 24px !important; padding-right: 24px !important; }
@@ -61,15 +70,15 @@ Sambhav Sharma
 </head>
 <body style="margin:0;padding:0;background-color:#f0ede8;">
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0ede8;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0ede8;" class="force-bg">
   <tr>
     <td align="center">
 
       <table class="email-container" role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:680px;">
 
-        <!-- ═══ HEADER ═══ -->
+        <!-- HEADER -->
         <tr>
-          <td class="header-pad" style="background-color:#0f2d3d;padding:40px 48px 32px;border-radius:16px 16px 0 0;">
+          <td class="header-pad force-header" style="background-color:#0f2d3d;padding:40px 48px 32px;border-radius:16px 16px 0 0;">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="background-color:rgba(20,160,120,0.18);border:1px solid rgba(78,207,160,0.4);border-radius:100px;padding:5px 14px;mso-border-radius:100px;">
@@ -82,25 +91,25 @@ Sambhav Sharma
           </td>
         </tr>
 
-        <!-- ═══ BODY ═══ -->
+        <!-- BODY -->
         <tr>
-          <td class="body-pad" style="background-color:#ffffff;padding:40px 48px;">
+          <td class="body-pad force-light" style="background-color:#ffffff;padding:40px 48px;">
 
             <p style="font-family:Arial,sans-serif;font-size:16px;color:#444444;line-height:1.75;margin:0 0 20px 0;">Hope you're having a great day!</p>
 
             <p style="font-family:Arial,sans-serif;font-size:15px;color:#222222;line-height:1.8;margin:0 0 32px 0;">
               I came across an opportunity at your organization and wanted to connect directly.
               I'm a <strong style="color:#0f2d3d;">Java Full Stack Software Engineer</strong> passionate about building
-              scalable, production-ready applications - from clean backend APIs to polished frontends.
+              scalable, production-ready applications &mdash; from clean backend APIs to polished frontends.
             </p>
 
-            <!-- STATS: 3-column table -->
+            <!-- STATS -->
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
               <tr>
                 <td class="stat-col" width="33%" style="padding-right:6px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                      <td align="center" class="force-stat" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
                         <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">1.7</span>
                         <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Years XP</span>
                       </td>
@@ -110,7 +119,7 @@ Sambhav Sharma
                 <td class="stat-col" width="33%" style="padding:0 6px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                      <td align="center" class="force-stat" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
                         <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">5+</span>
                         <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Projects</span>
                       </td>
@@ -120,7 +129,7 @@ Sambhav Sharma
                 <td class="stat-col" width="33%" style="padding-left:6px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td align="center" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
+                      <td align="center" class="force-stat" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:12px;padding:16px 12px;">
                         <span style="font-family:Georgia,serif;font-size:24px;color:#0f2d3d;display:block;line-height:1.2;">Full</span>
                         <span style="font-family:Arial,sans-serif;font-size:11px;color:#888888;text-transform:uppercase;letter-spacing:0.8px;display:block;margin-top:4px;">Stack</span>
                       </td>
@@ -133,13 +142,13 @@ Sambhav Sharma
             <!-- SKILLS LABEL -->
             <p style="font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aaaaaa;margin:0 0 14px 0;">Core Skills</p>
 
-            <!-- SKILLS: 2x2 table -->
+            <!-- SKILLS -->
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
               <tr>
                 <td class="skill-col" width="50%" style="padding-right:5px;padding-bottom:10px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                      <td class="force-skill" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                           <tr>
                             <td style="width:8px;vertical-align:middle;">
@@ -159,7 +168,7 @@ Sambhav Sharma
                 <td class="skill-col" width="50%" style="padding-left:5px;padding-bottom:10px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                      <td class="force-skill" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                           <tr>
                             <td style="width:8px;vertical-align:middle;">
@@ -181,7 +190,7 @@ Sambhav Sharma
                 <td class="skill-col" width="50%" style="padding-right:5px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                      <td class="force-skill" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                           <tr>
                             <td style="width:8px;vertical-align:middle;">
@@ -201,7 +210,7 @@ Sambhav Sharma
                 <td class="skill-col" width="50%" style="padding-left:5px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
+                      <td class="force-skill" style="background-color:#f7f4ef;border:1px solid #e8e3db;border-radius:10px;padding:12px 14px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                           <tr>
                             <td style="width:8px;vertical-align:middle;">
@@ -225,9 +234,9 @@ Sambhav Sharma
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:32px;">
               <tr>
                 <td width="4" style="background-color:#14a078;border-radius:3px;font-size:0;">&nbsp;</td>
-                <td style="background-color:#f0faf6;padding:14px 18px;border-radius:0 10px 10px 0;">
+                <td class="force-quote" style="background-color:#f0faf6;padding:14px 18px;border-radius:0 10px 10px 0;">
                   <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#1a4a38;line-height:1.75;font-style:italic;margin:0;">
-                    &ldquo;I write clean, end-to-end code - not just features. Whether it&rsquo;s a microservice or a React component, I care about the details.&rdquo;
+                    &ldquo;I write clean, end-to-end code &mdash; not just features. Whether it&rsquo;s a microservice or a React component, I care about the details.&rdquo;
                   </p>
                 </td>
               </tr>
@@ -239,7 +248,7 @@ Sambhav Sharma
               I'd genuinely appreciate the opportunity to connect or be considered for a referral.
             </p>
             <p style="font-family:Arial,sans-serif;font-size:15px;color:#0f2d3d;font-weight:700;line-height:1.8;margin:0;">
-              Thank you for your time - it truly means a lot.
+              Thank you for your time &mdash; it truly means a lot.
             </p>
 
           </td>
@@ -247,21 +256,20 @@ Sambhav Sharma
 
         <!-- DIVIDER -->
         <tr>
-          <td style="background-color:#ffffff;padding:0 48px;">
+          <td class="force-light" style="background-color:#ffffff;padding:0 48px;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr><td style="border-top:1px solid #e8e4df;font-size:0;line-height:0;">&nbsp;</td></tr>
             </table>
           </td>
         </tr>
 
-        <!-- ═══ FOOTER ═══ -->
+        <!-- FOOTER -->
         <tr>
-          <td class="footer-pad" style="background-color:#0f2d3d;padding:28px 48px;border-radius:0 0 16px 16px;">
+          <td class="footer-pad force-footer" style="background-color:#0f2d3d;padding:28px 48px;border-radius:0 0 16px 16px;">
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:20px;color:#ffffff;margin:0 0 4px 0;">Sambhav Sharma</p>
             <p style="font-family:Arial,sans-serif;font-size:12px;color:#4ecfa0;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin:0 0 18px 0;">Java Full Stack Engineer</p>
 
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-              <!-- Email -->
               <tr>
                 <td class="footer-td" style="padding-bottom:10px;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -276,7 +284,6 @@ Sambhav Sharma
                   </table>
                 </td>
               </tr>
-              <!-- Phone -->
               <tr>
                 <td class="footer-td" style="padding-bottom:10px;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -291,7 +298,6 @@ Sambhav Sharma
                   </table>
                 </td>
               </tr>
-              <!-- LinkedIn -->
               <tr>
                 <td class="footer-td">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0">
@@ -312,7 +318,6 @@ Sambhav Sharma
         </tr>
 
       </table>
-      <!-- /EMAIL CONTAINER -->
 
     </td>
   </tr>
