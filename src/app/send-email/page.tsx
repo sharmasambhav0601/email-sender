@@ -23,13 +23,8 @@ export default function SendEmailPage() {
   const [emailInput, setEmailInput] = useState("");
   const [emails, setEmails] = useState<string[]>([]);
 
-  const [subject, setSubject] = useState(
-  defaultEmailTemplate.subject
-);
-
-const [message, setMessage] = useState(
-  defaultEmailTemplate.message
-);
+  const [subject, setSubject] = useState(defaultEmailTemplate.subject);
+  const [message, setMessage] = useState(defaultEmailTemplate.message);
 
   // 📎 Attachment
   const [file, setFile] = useState<File | null>(null);
@@ -89,7 +84,7 @@ const [message, setMessage] = useState(
     formData.append("emails", JSON.stringify(emails));
     formData.append("subject", subject);
     formData.append("message", message);
-    formData.append("htmlMessage", defaultEmailTemplate.htmlMessage);
+    formData.append("htmlMessage", defaultEmailTemplate.htmlMessage); // ✅ FIX
 
     if (file) {
       formData.append("file", file);
@@ -176,14 +171,18 @@ const [message, setMessage] = useState(
 
           <Divider sx={{ my: 2 }} />
 
-          <Typography variant="subtitle2">Message</Typography>
-          <Typography whiteSpace="pre-line">{message}</Typography>
+          <Typography variant="subtitle2">Message (HTML)</Typography>
+          {/* ✅ Show HTML preview in dialog instead of raw text */}
+          <Box
+            sx={{ border: "1px solid", borderColor: "divider", borderRadius: 1, overflow: "hidden", mt: 1 }}
+            dangerouslySetInnerHTML={{ __html: defaultEmailTemplate.htmlMessage }}
+          />
 
           <Divider sx={{ my: 2 }} />
 
           <Typography variant="subtitle2">Attachment</Typography>
           <Typography>
-            {fileName || "Sambhav_Java_FS_Resume.pdf (default)"}
+            {fileName || "SambhavSharma_FS_Resume.pdf (default)"}
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -227,8 +226,22 @@ const [message, setMessage] = useState(
             ))}
           </Stack>
 
-          <TextField label="Subject" fullWidth margin="normal" value={subject} onChange={(e) => setSubject(e.target.value)} />
-          <TextField label="Message" fullWidth multiline rows={6} margin="normal" value={message} onChange={(e) => setMessage(e.target.value)} />
+          <TextField
+            label="Subject"
+            fullWidth
+            margin="normal"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+          />
+          <TextField
+            label="Message (plain text fallback)"
+            fullWidth
+            multiline
+            rows={6}
+            margin="normal"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
 
           <Typography variant="body2" mt={2} color="text.secondary">
             If no file is uploaded, default resume will be used
@@ -261,10 +274,20 @@ const [message, setMessage] = useState(
           )}
 
           <Stack direction="row" spacing={2} mt={3}>
-            <Button fullWidth variant="outlined" onClick={() => setShowPreview(true)} disabled={!emails.length}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => setShowPreview(true)}
+              disabled={!emails.length}
+            >
               Preview
             </Button>
-            <Button fullWidth variant="contained" onClick={() => setShowPreview(true)} disabled={!emails.length || loading}>
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={() => setShowPreview(true)}
+              disabled={!emails.length || loading}
+            >
               Send
             </Button>
           </Stack>
