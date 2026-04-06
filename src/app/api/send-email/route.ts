@@ -46,13 +46,13 @@ export async function POST(req: Request) {
 
     isTempFile = true;
   } else {
-    attachmentName = "Sambhav_Java_FS_Resume.pdf";
+    attachmentName = "SambhavSharma_FS_Resume.pdf";
     attachmentPath = path.join(
       process.cwd(),
       "src",
       "assets",
       "resumes",
-      "Sambhav_Java_FS_Resume.pdf"
+      "SambhavSharma_FS_Resume.pdf"
     );
 
     await fs.access(attachmentPath);
