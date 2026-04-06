@@ -17,10 +17,10 @@ I came across an opportunity at your organization and wanted to reach out direct
 I'm Sambhav Sharma — a Java Full Stack Software Engineer with 1.7 years of hands-on experience building scalable, production-ready applications.
 
 CORE SKILLS
-• Java, Spring Boot, Microservices
-• REST APIs & SQL
-• AWS / Azure basics (EC2, S3, CI/CD)
-• React & TypeScript
+- Java, Spring Boot, Microservices
+- REST APIs & SQL
+- AWS / Azure basics (EC2, S3, CI/CD)
+- React & TypeScript
 
 I take pride in writing clean, maintainable code and consistently delivering features end-to-end — from backend APIs to polished UIs. I'm actively looking for the right opportunity to grow and contribute.
 
@@ -48,7 +48,11 @@ Sambhav Sharma
     a { text-decoration: none; }
     @media only screen and (max-width: 600px) {
       .email-container { width: 100% !important; }
-      .stat-col { display: block !important; width: 100% !important; }
+      .stat-col {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 0 10px 0 !important;
+      }
       .skill-col { display: block !important; width: 100% !important; padding: 0 0 8px 0 !important; }
       .footer-td { display: block !important; padding: 0 0 12px 0 !important; }
       .header-pad, .body-pad, .footer-pad { padding-left: 24px !important; padding-right: 24px !important; }
@@ -87,7 +91,7 @@ Sambhav Sharma
             <p style="font-family:Arial,sans-serif;font-size:15px;color:#222222;line-height:1.8;margin:0 0 32px 0;">
               I came across an opportunity at your organization and wanted to connect directly.
               I'm a <strong style="color:#0f2d3d;">Java Full Stack Software Engineer</strong> passionate about building
-              scalable, production-ready applications &mdash; from clean backend APIs to polished frontends.
+              scalable, production-ready applications - from clean backend APIs to polished frontends.
             </p>
 
             <!-- STATS: 3-column table -->
@@ -223,7 +227,7 @@ Sambhav Sharma
                 <td width="4" style="background-color:#14a078;border-radius:3px;font-size:0;">&nbsp;</td>
                 <td style="background-color:#f0faf6;padding:14px 18px;border-radius:0 10px 10px 0;">
                   <p style="font-family:Georgia,'Times New Roman',serif;font-size:14px;color:#1a4a38;line-height:1.75;font-style:italic;margin:0;">
-                    &ldquo;I write clean, end-to-end code &mdash; not just features. Whether it&rsquo;s a microservice or a React component, I care about the details.&rdquo;
+                    &ldquo;I write clean, end-to-end code - not just features. Whether it&rsquo;s a microservice or a React component, I care about the details.&rdquo;
                   </p>
                 </td>
               </tr>
@@ -235,7 +239,7 @@ Sambhav Sharma
               I'd genuinely appreciate the opportunity to connect or be considered for a referral.
             </p>
             <p style="font-family:Arial,sans-serif;font-size:15px;color:#0f2d3d;font-weight:700;line-height:1.8;margin:0;">
-              Thank you for your time &mdash; it truly means a lot.
+              Thank you for your time - it truly means a lot.
             </p>
 
           </td>
