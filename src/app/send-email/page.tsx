@@ -84,7 +84,6 @@ export default function SendEmailPage() {
     formData.append("emails", JSON.stringify(emails));
     formData.append("subject", subject);
     formData.append("message", message);
-    formData.append("htmlMessage", defaultEmailTemplate.htmlMessage); // ✅ FIX
 
     if (file) {
       formData.append("file", file);
@@ -168,15 +167,6 @@ export default function SendEmailPage() {
 
           <Typography variant="subtitle2">Subject</Typography>
           <Typography>{subject}</Typography>
-
-          <Divider sx={{ my: 2 }} />
-
-          <Typography variant="subtitle2">Message (HTML)</Typography>
-          {/* ✅ Show HTML preview in dialog instead of raw text */}
-          <Box
-            sx={{ border: "1px solid", borderColor: "divider", borderRadius: 1, overflow: "hidden", mt: 1 }}
-            dangerouslySetInnerHTML={{ __html: defaultEmailTemplate.htmlMessage }}
-          />
 
           <Divider sx={{ my: 2 }} />
 
