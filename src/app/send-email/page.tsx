@@ -89,6 +89,7 @@ const [message, setMessage] = useState(
     formData.append("emails", JSON.stringify(emails));
     formData.append("subject", subject);
     formData.append("message", message);
+    formData.append("htmlMessage", defaultEmailTemplate.htmlMessage);
 
     if (file) {
       formData.append("file", file);
