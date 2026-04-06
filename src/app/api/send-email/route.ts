@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import path from "path";
 import fs from "fs/promises";
-
 import { connectDB } from "@/lib/mongodb";
 import EmailLog from "@/models/EmailLog";
 
@@ -10,11 +9,10 @@ export async function POST(req: Request) {
   await connectDB();
 
   const formData = await req.formData();
-
   const emails: string[] = JSON.parse(formData.get("emails") as string);
   const subject = formData.get("subject") as string;
   const message = formData.get("message") as string;
-
+  const htmlMessage = formData.get("htmlMessage") as string | null; // ← NEW
   const file = formData.get("file") as File | null;
   const customFileName = formData.get("fileName") as string | null;
 
@@ -37,13 +35,10 @@ export async function POST(req: Request) {
   if (file) {
     const buffer = Buffer.from(await file.arrayBuffer());
     attachmentName = customFileName || file.name;
-
     const tmpDir = path.join(process.cwd(), "tmp");
     await fs.mkdir(tmpDir, { recursive: true });
-
     attachmentPath = path.join(tmpDir, attachmentName);
     await fs.writeFile(attachmentPath, buffer);
-
     isTempFile = true;
   } else {
     attachmentName = "SambhavSharma_FS_Resume.pdf";
@@ -54,7 +49,6 @@ export async function POST(req: Request) {
       "resumes",
       "SambhavSharma_FS_Resume.pdf"
     );
-
     await fs.access(attachmentPath);
   }
 
@@ -73,7 +67,8 @@ export async function POST(req: Request) {
             from: process.env.GMAIL_USER,
             to,
             subject,
-            text: message,
+            text: message,                          // plain-text fallback
+            ...(htmlMessage && { html: htmlMessage }), // ← NEW: HTML version if provided
             attachments: [
               {
                 filename: attachmentName,
