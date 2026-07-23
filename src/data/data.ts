@@ -11,21 +11,11 @@ export const defaultEmailTemplate = {
 
 I hope you're doing well.
 
-I came across an opportunity at your organization and wanted to reach out directly.
+I'm Sambhav Sharma, a Java Full Stack Engineer with 2.2 + years of experience building scalable applications using Java, Spring Boot, React, TypeScript, SQL, and Microservices.
 
-I'm Sambhav Sharma — a Java Full Stack Software Engineer with 1.7 years of hands-on experience building scalable, production-ready applications.
+I'm currently exploring new opportunities. I've attached my resume, and if there's a suitable role on your team, I'd be grateful if you could consider my profile.
 
-CORE SKILLS
-- Java, Spring Boot, Microservices
-- REST APIs & SQL
-- AWS / Azure basics (EC2, S3, CI/CD)
-- React & TypeScript
-
-I take pride in writing clean, maintainable code and consistently delivering features end-to-end — from backend APIs to polished UIs. I'm actively looking for the right opportunity to grow and contribute.
-
-I've attached my resume for reference. I'd love to connect, or if there's a suitable role, I'd truly appreciate a referral.
-
-Thank you for your time - it means a lot.
+Thank you for your time.
 
 Best regards,
 Sambhav Sharma
